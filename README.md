@@ -12,9 +12,9 @@
 
 ## 🌟 1. 核心思想（Core Idea）
 
-本项目提供两个关键模型结构：
+本项目提供两个不同特征工程的关键模型结构：
 
-### **① Temporal Window Motion SNN（主模型）**
+### **① Temporal Window Motion SNN（基于运动感知模型）**
 
 * Dense 读取视频所有帧
 * 经过 Gaussian Blur（降噪）
@@ -22,7 +22,7 @@
 * 应用 **时间窗口（Temporal Window）** 平滑运动趋势
 * 输入两层 LIF 神经元做时间整合
 
-### **② Patch-Level SNN（局部感受野模型）**
+### **② Patch-Level SNN（基于局部感受野模型）**
 
 * 将每帧划分为多个 patch
 * 对每个 patch 求均值（模拟视觉皮层局部感受野）
@@ -48,8 +48,6 @@ unzip spooky_bench.zip -d data
 data/spooky_bench/Shapes/arrow/*.mp4
 data/spooky_bench/Shapes/heart/*.mp4
 ```
-
-你可以挑选部分视频组成训练/验证集。
 
 ---
 
@@ -78,9 +76,9 @@ data/spooky_shapes/heart/video_003.mp4,heart
 
 ---
 
-## 🧠 4. 主要训练文件（模型说明）
+## 🧠 4. 主要训练文件
 
-### **4.1 snn_temporal_window.py（主模型）**
+### **4.1 snn_temporal_window.py**
 
 功能：
 
@@ -93,8 +91,6 @@ data/spooky_shapes/heart/video_003.mp4,heart
   * LIF(N → hidden_dim)
   * LIF(hidden_dim → num_classes)
 * 对所有时间步的脉冲做平均以输出分类结果
-
-适合处理 **只有时间维度才能解码的隐藏图形**。
 
 ---
 
@@ -189,5 +185,5 @@ SpookySNN/
 ## 🎯 8. 总结
 
 本项目实现了一个能够在高噪声视频中复现 **类人视觉识别能力** 的 SNN 系统：
-通过 **空间降噪（blur / patch）与时间整合（temporal window / LIF）**，
+通过 **空间降噪与时间整合**，
 模型能够从“肉眼才可见”的隐藏动态中提取形状信息。
