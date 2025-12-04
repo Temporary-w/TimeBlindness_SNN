@@ -78,7 +78,7 @@ data/spooky_shapes/heart/video_003.mp4,heart
 
 ## 🧠 4. 主要训练文件
 
-### **4.1 snn_temporal_window.py**
+### **4.1 snn_spooky_temporal_window.py**
 
 功能：
 
@@ -94,7 +94,7 @@ data/spooky_shapes/heart/video_003.mp4,heart
 
 ---
 
-### **4.2 snn_patch_level.py（Patch-Level 模型）**
+### **4.2 snn_spooky_patch_dense.py（Patch-Level 模型）**
 
 功能：
 
@@ -120,7 +120,7 @@ pip install torch opencv-python numpy
 ### **5.1 运行 Temporal Window SNN**
 
 ```bash
-python snn_temporal_window.py \
+python snn_spooky_temporal_window.py \
   --csv_train train.csv \
   --csv_val val.csv \
   --epochs 10 \
@@ -135,7 +135,7 @@ python snn_temporal_window.py \
 ### **5.2 运行 Patch-Level SNN**
 
 ```bash
-python snn_patch_level.py \
+python snn_spooky_patch_dense.py \
   --csv_train train.csv \
   --csv_val val.csv \
   --epochs 10 \
@@ -173,8 +173,8 @@ SpookySNN/
 ├── train_csv.py
 ├── val_csv.py
 │
-├── snn_temporal_window.py   # 主训练文件
-├── snn_patch_level.py       # patch 版本
+├── snn_spooky_temporal_window.py   # 主训练文件
+├── snn_spooky_patch_dense.py       # patch 版本
 │
 ├── checkpoints/
 └── README.md
@@ -184,6 +184,6 @@ SpookySNN/
 
 ## 🎯 8. 总结
 
-本项目实现了一个能够在高噪声视频中复现 **类人视觉识别能力** 的 SNN 系统：
+本项目拟实现一个能够在高噪声视频中复现 **类人视觉识别能力** 的 SNN 系统：
 通过 **空间降噪与时间整合**，
 模型能够从“肉眼才可见”的隐藏动态中提取形状信息。
